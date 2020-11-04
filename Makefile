@@ -36,7 +36,7 @@ build-local:
 
 .PHONY: release
 release:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -o $(EXECUTABLE) \
+	@CGO_ENABLED=0 GOOS=$(go env GOOS) GOARCH=$(go env GOARCH) GO111MODULE=on go build -o $(EXECUTABLE) \
 	    -a \
 	    -mod=vendor \
 	    -ldflags "-w -X main.version=$(VERSION)" \
